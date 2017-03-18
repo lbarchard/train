@@ -1,0 +1,15 @@
+#header {
+	background-color: black;
+	color: white;
+}
+
+.panel > .panel-heading {
+	background-image: none;
+	background-color: #428bca;
+	border-color: #428bca;
+	color: white;
+}
+
+.panel {
+	border-color: #428bca;
+}
