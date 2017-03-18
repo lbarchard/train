@@ -36,7 +36,7 @@ $( document ).ready(function() {
       var trainName = childSnapshot.val().trainName;
       var destination = childSnapshot.val().destination;
       var frequency = childSnapshot.val().frequency;
-      var now = now();
+      // var now = now();
       console(now);
       // Created a variable to figure out when the next arrival is
       var nextArrival = "tbd"
