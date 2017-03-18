@@ -19,26 +19,25 @@
 	<body>
 		<div class="container">
 			<div class="jumbotron text-center" id="header" >
-				<h1>Employee Data Management</h1>
-				<p>A Comprehensive Directory of Employee Billable Hours</p>
+				<h1>Anytime is Train Time</h1>
+				<p>Choo Choo.  Chee Chee.</p>
 			</div>
 
 			<div class="panel panel-default">
-				<div class="panel-heading"><h4>Current Employees</h4></div>
+				<div class="panel-heading"><h4>Current Train Schedule</h4></div>
 				<div class="panel-body">
 				<table class="table table-striped">
 					<thread>
 						<tr>
-							<th>Employee Name</th>
-							<th>Role</th>
-							<th>Start Date</th>
-							<th>Months Worked</th>
-							<th>Monthly Rate ($)</th>
-							<th>Total Billed ($)</th>
+							<th>Train Name</th>
+							<th>Destination</th>
+							<th>Frequency (min)</th>
+							<th>Next Arrival</th>
+							<th>Minutes Away</th>
 						</tr>
 
 					</thread>
-					<tbody id="employees">
+					<tbody id="schedule">
 					<!-- add empl here -->
 					</tbody>
 
@@ -48,26 +47,26 @@
 			
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Add Employee</h3>
+					<h3 class="panel-title">Add Train</h3>
 				</div>
 				<div class="panel-body">
 					<!-- Sign-up Form (note the various input "types")-->
 					<form role="form">
 						<div class="form-group">
-							<label for="name-input">Employee Name:</label>
-							<input class="form-control" id="employee-name" type="text">
+							<label for="train-input">Train Name:</label>
+							<input class="form-control" id="train-name" type="text">
 						</div>
 						<div class="form-group">
-							<label for="role-input">Role:</label>
-							<input class="form-control" id="role-input" type="text">
+							<label for="destination-input">Destination:</label>
+							<input class="form-control" id="destination-input" type="text">
 						</div>
 						<div class="form-group">
-							<label for="start-input">Start Date:</label>
-							<input class="form-control" id="start-input" type="date">
+							<label for="firstTrain-input">First Train Time (HH:MM):</label>
+							<input class="form-control" id="firstTrain-input" type="time">
 						</div>
 						<div class="form-group">
-							<label for="monthly-input">Monthly Rate:</label>
-							<input class="form-control" id="monthly-input" type="number"></input>
+							<label for="monthly-input">Frequency (min):</label>
+							<input class="form-control" id="<frequency></frequency-input" type="number"></input>
 						</div>
 						<button class="btn btn-default" id="add-user" type="submit">Submit</button>
 					</form>
