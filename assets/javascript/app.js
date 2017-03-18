@@ -35,7 +35,7 @@ $( document ).ready(function() {
 
       var trainName = childSnapshot.val().trainName;
       var destination = childSnapshot.val().destination;
-      var firstTrainTime = childSnapshot.val().frequency;
+      var frequency = childSnapshot.val().frequency;
       var now = now();
       console(now);
       // Created a variable to figure out when the next arrival is
@@ -44,7 +44,7 @@ $( document ).ready(function() {
       var minutesAway = "tbd"
 
 
-      $("#schedule").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + firstTrainTime + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td><td>");
+      $("#schedule").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td><td>");
 
       }, function (errorObject) {
           console.log('The read failed' + errorObject.code);
