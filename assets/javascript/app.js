@@ -21,11 +21,13 @@ $( document ).ready(function() {
   	trainName = $('#train-name').val().trim();
   	destination = $('#destination').val().trim();
   	frequency = $('#frequency').val().trim();
+    firstTrainTime = $('#firstTrain-input').val().trim();
   	//store values of global variables to firebase
   	database.ref('/schedule').push({
   		trainName: trainName,
   		destination: destination,
   		frequency: frequency,
+      firstTrainTime: firstTrainTime,
       // TIMESTAMP records when data was added around the globe according to the server time
   		dateAdded: firebase.database.ServerValue.TIMESTAMP
   	});
@@ -36,15 +38,17 @@ $( document ).ready(function() {
       var trainName = childSnapshot.val().trainName;
       var destination = childSnapshot.val().destination;
       var frequency = childSnapshot.val().frequency;
-      // var now = now();
-      // console(now);
+      var firstTrainTime = moment(childSnapshot.val().firstTrainTime,"HH:mm"); //make sure it's a moment date
+      var hoursSinceFirstTrain = moment().subtract(firstTrainTime).hours(); //this doesn't work as it things firstTrainTime is midnight always
+      var minutesSinceFirstTrain = moment().subtract(firstTrainTime).minutes(); //this doesn't work as it things firstTrainTime is midnight always
+      var totalMinutesSinceFirstTrain = 60*(hoursSinceFirstTrain) + minutesSinceFirstTrain;
       // Created a variable to figure out when the next arrival is
-      var nextArrival = "tbd"
+      var nextArrivalMinutes = frequency * (Math.floor(totalMinutesSinceFirstTrain / frequency) + 1) //this should get minutes from the original train that the next arrival is happening
       // Created a variable to figure out how many minutes away the next arrival is
-      var minutesAway = "tbd"
+      var minutesAway = nextArrivalMinutes - totalMinutesSinceFirstTrain
 
 
-      $("#schedule").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td><td>");
+      $("#schedule").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextArrivalMinutes + "</td><td>" + minutesAway + "</td><td>");
 
       }, function (errorObject) {
           console.log('The read failed' + errorObject.code);
