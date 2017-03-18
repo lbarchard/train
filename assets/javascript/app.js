@@ -37,7 +37,7 @@ $( document ).ready(function() {
       var destination = childSnapshot.val().destination;
       var frequency = childSnapshot.val().frequency;
       // var now = now();
-      console(now);
+      // console(now);
       // Created a variable to figure out when the next arrival is
       var nextArrival = "tbd"
       // Created a variable to figure out how many minutes away the next arrival is
