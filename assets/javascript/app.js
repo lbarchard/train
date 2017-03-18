@@ -15,12 +15,12 @@ $( document ).ready(function() {
   var destination = "";
   var frequency = "";
   //on submit button click, store field values to firebase database as new schedule
-  $('#add-user').on("click", function(event){
+  $('#add-train').on("click", function(event){
   	event.preventDefault();
 
   	trainName = $('#train-name').val().trim();
-  	destination = $('#destination-input').val().trim();
-  	frequency = $('#frequency-input').val().trim();
+  	destination = $('#destination').val().trim();
+  	frequency = $('#frequency').val().trim();
   	//store values of global variables to firebase
   	database.ref('/schedule').push({
   		trainName: trainName,
@@ -35,15 +35,16 @@ $( document ).ready(function() {
 
       var trainName = childSnapshot.val().trainName;
       var destination = childSnapshot.val().destination;
-      var firstTrainTime = childSnapshot.val().startDate;
-      var empMonthlyRate = childSnapshot.val().monthlyRate;
-      var schedDateAdded = childSnapshot.val().dateAdded;
-      // Created a variable to figure out how many months worked
-      var empMonthsWorked = moment(schedDateAdded).diff(firstTrainTime, "months");
-      // Created a variable to figure out the total billed amount
-      var totalBilled = "$" + empMonthlyRate * empMonthsWorked;
+      var firstTrainTime = childSnapshot.val().frequency;
+      var now = now();
+      console(now);
+      // Created a variable to figure out when the next arrival is
+      var nextArrival = "tbd"
+      // Created a variable to figure out how many minutes away the next arrival is
+      var minutesAway = "tbd"
 
-      $("#schedule").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + firstTrainTime + "</td><td>" + empMonthsWorked + "</td><td>" + empMonthlyRate + "</td><td>" + totalBilled + "</td></tr>");
+
+      $("#schedule").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + firstTrainTime + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td><td>");
 
       }, function (errorObject) {
           console.log('The read failed' + errorObject.code);
